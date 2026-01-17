@@ -1,0 +1,74 @@
+.promo-section {
+    padding: 80px 0;
+}
+
+.promo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.promo-col {
+    width: 100%;
+}
+
+.promo-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.promo-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.promo-header {
+    padding: 20px;
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    color: white;
+}
+
+.promo-body {
+    padding: 25px;
+    flex-grow: 1;
+}
+
+.badge {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-right: 10px;
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.discount-tag {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin: 10px 0;
+}
+
+@media (max-width: 992px) {
+    .promo-grid {
+        grid-template-columns: repeat(2, 1fr); 
+    }
+}
+@media (max-width: 768px) {
+    .promo-grid {
+        grid-template-columns: 1fr; 
+    }
+    
+    .promo-section {
+        padding: 40px 0;
+    }
+}

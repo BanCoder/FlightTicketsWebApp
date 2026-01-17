@@ -1,0 +1,46 @@
+﻿@using FlightTicketsWebsite.Infrastructure
+@inject IConfiguration configuration
+@{
+    AppConfiguration? appConfiguration = configuration.GetSection("Project").Get<AppConfiguration>();
+}
+<footer class="footer">
+    <div class="w3-container">
+        <div class="w3-row-padding">
+            <div class="w3-col s12 m6 l4 w3-padding">
+                <div class="footer-logo">@appConfiguration?.Company.CompanyName <img src="~/img/icons/airtravellogo.jpg" alt="airtravellogo" class="logo-image"></div>
+                <p>Мы делаем ваши путешествия комфортными и доступными с 2025 года.</p>
+                <div style="margin-top: 20px;">
+                    <a href="https://web.telegram.org/" class="social-icon"><i class="fab fa-telegram"></i></a>
+                    <a href="https://web-instagram.com/" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="https://vk.com" class="social-icon"><i class="fab fa-vk"></i></a>
+                    <a href="https://youtube.com/" class="social-icon"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="w3-col s12 m6 l4 w3-padding">
+                <h3>Полезные ссылки</h3>
+                <ul class="w3-ul">
+                    <li><a asp-controller="Home" asp-action="Index">Авиабилеты</a></li>
+                    <li><a asp-controller="Home" asp-action="Index">Отели</a></li>
+                    <li><a asp-controller="Account" asp-action="Promotions">Акции</a></li>
+                </ul>
+            </div>
+            <div class="w3-col s12 m12 l4 w3-padding">
+                <h3>Контакты</h3>
+                <div class="contact-info" id="contacts">
+                    <p><i class="fas fa-map-marker-alt"></i> г. Санкт-Петербург, ул. Примерная, д. 1, офис 228</p>
+                    <p><i class="fas fa-phone"></i> @appConfiguration?.Company.CompanyPhone</p>
+                    <p><i class="fas fa-envelope"></i> @appConfiguration?.Company.CompanyEmail</p>
+                    <p><i class="fas fa-clock"></i> Пн-Пт: 8:00 - 20:00, Сб-Вс: 10:00 - 18:00</p>
+                </div>
+            </div>
+        </div>
+        <div class="w3-row w3-padding-16" style="border-top: 1px solid rgba(255,255,255,0.1); margin-top: 30px;">
+            <div class="w3-col s12 m6 l6">
+                <p>© 2025 @appConfiguration?.Company.CompanyName. Все права защищены.</p>
+            </div>
+            <div class="w3-col s12 m6 l6 w3-right">
+                <p class="w3-right">Сделано с <i class="fas fa-heart" style="color: var(--primary-color);"></i> для путешественников</p>
+            </div>
+        </div>
+    </div>
+</footer>

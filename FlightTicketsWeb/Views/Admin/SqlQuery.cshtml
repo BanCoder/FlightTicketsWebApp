@@ -1,0 +1,104 @@
+﻿@{
+    ViewData["Title"] = "SQL Запросы";
+}
+<div class="sql-container">
+    <h2 style="text-align:center">SQL Запросы</h2>
+
+    @if (ViewBag.Success != null)
+    {
+        <div class="sql-card" style="background: #e7f5ff; border-color: #a5d8ff;">
+            <p style="margin: 0; color: #1864ab;">@ViewBag.Success</p>
+        </div>
+    }
+
+    @if (ViewBag.Error != null)
+    {
+        <div class="sql-card" style="background: #ffe3e3; border-color: #ffa8a8;">
+            <p style="margin: 0; color: #c92a2a;">@ViewBag.Error</p>
+        </div>
+    }
+
+    <div class="sql-card">
+        <form method="post" asp-action="ExecuteSql">
+            <div style="margin-bottom: 15px;">
+                <label style="display: block; margin-bottom: 8px; font-weight: 500;">Введите SQL запрос:</label>
+                <textarea name="sql" class="sql-textarea" rows="8" placeholder="SELECT * FROM Flight">@ViewBag.Query</textarea>
+            </div>
+
+            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                <button type="submit" class="sql-btn sql-btn-primary">
+                    Выполнить
+                </button>
+                <button type="button" class="sql-btn sql-btn-secondary"
+                        onclick="document.querySelector('textarea').value = 'SELECT * FROM Flight'">
+                    Пример SELECT
+                </button>
+                <button type="button" class="sql-btn sql-btn-secondary"
+                        onclick="document.querySelector('textarea').value = 'UPDATE Flight SET Price = Price * 1.1 WHERE flight_id = 1'">
+                    Пример UPDATE
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <div class="tables-info">
+        <h4 style="margin-top: 0;">Доступные таблицы:</h4>
+        <ul style="columns: 2; column-gap: 30px; list-style: none; padding: 0;">
+            <li><code>Flight</code> - рейсы</li>
+            <li><code>Hotel</code> - отели</li>
+            <li><code>SystemUser</code> - пользователи</li>
+            <li><code>Booking</code> - бронирования</li>
+            <li><code>Passenger</code> - пассажиры</li>
+            <li><code>City</code> - города</li>
+            <li><code>Airline</code> - авиакомпании</li>
+            <li><code>UserAuditLog</code> - аудит пользователей</li>
+            <li><code>FlightAuditLog</code> - аудит рейсов</li>
+        </ul>
+    </div>
+
+    @if (ViewBag.Results != null)
+    {
+        <div class="results-container">
+            <div class="results-header">
+                <h4 style="margin: 0; display: flex; align-items: center;">
+                    Результаты запроса
+                    <span class="rows-count">@((ViewBag.Results as List<Dictionary<string, object>>)?.Count ?? 0) строк</span>
+                </h4>
+            </div>
+
+            @if ((ViewBag.Results as List<Dictionary<string, object>>)?.Count > 0)
+            {
+                <div class="results-scroll">
+                    <table class="results-table">
+                        <thead>
+                            <tr>
+                                @foreach (var column in ViewBag.Columns)
+                                {
+                                    <th>@column</th>
+                                }
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var row in ViewBag.Results as List<Dictionary<string, object>>)
+                            {
+                                <tr>
+                                    @foreach (var column in ViewBag.Columns)
+                                    {
+                                        <td>@(row[column]?.ToString() ?? "NULL")</td>
+                                    }
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+            else
+            {
+                <div style="padding: 40px; text-align: center; color: #666;">
+                    <p>Данные не найдены</p>
+                </div>
+            }
+        </div>
+    }
+    <link rel="stylesheet" href="~/css/admin.css">
+</div>

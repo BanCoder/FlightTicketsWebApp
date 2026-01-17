@@ -1,0 +1,109 @@
+is_global = true
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = FlightTicketsWeb
+build_property.RootNamespace = FlightTicketsWeb
+build_property.ProjectDir = C:\Users\Vladimir\OneDrive\Desktop\Мои разработки\FlightTicketsWeb\FlightTicketsWeb\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\Vladimir\OneDrive\Desktop\Мои разработки\FlightTicketsWeb\FlightTicketsWeb
+build_property._RazorSourceGeneratorDebug = 
+build_property.EffectiveAnalysisLevelStyle = 8.0
+build_property.EnableCodeStyleSeverity = 
+
+[C:/Users/Vladimir/OneDrive/Desktop/Мои разработки/FlightTicketsWeb/FlightTicketsWeb/Views/Account/Entrance.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxFbnRyYW5jZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Vladimir/OneDrive/Desktop/Мои разработки/FlightTicketsWeb/FlightTicketsWeb/Views/Account/Promotions.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxQcm9tb3Rpb25zLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Vladimir/OneDrive/Desktop/Мои разработки/FlightTicketsWeb/FlightTicketsWeb/Views/Account/Registration.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZWdpc3RyYXRpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Vladimir/OneDrive/Desktop/Мои разработки/FlightTicketsWeb/FlightTicketsWeb/Views/Admin/SqlQuery.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cU3FsUXVlcnkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Vladimir/OneDrive/Desktop/Мои разработки/FlightTicketsWeb/FlightTicketsWeb/Views/Booking/HotelOnlyBooking.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va2luZ1xIb3RlbE9ubHlCb29raW5nLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Vladimir/OneDrive/Desktop/Мои разработки/FlightTicketsWeb/FlightTicketsWeb/Views/Booking/TicketsAndHotelBooking.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va2luZ1xUaWNrZXRzQW5kSG90ZWxCb29raW5nLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Vladimir/OneDrive/Desktop/Мои разработки/FlightTicketsWeb/FlightTicketsWeb/Views/Home/AboutUs.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBYm91dFVzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Vladimir/OneDrive/Desktop/Мои разработки/FlightTicketsWeb/FlightTicketsWeb/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Vladimir/OneDrive/Desktop/Мои разработки/FlightTicketsWeb/FlightTicketsWeb/Views/Search/SearchFlightResult.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VhcmNoXFNlYXJjaEZsaWdodFJlc3VsdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Vladimir/OneDrive/Desktop/Мои разработки/FlightTicketsWeb/FlightTicketsWeb/Views/Search/SearchHotelResult.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VhcmNoXFNlYXJjaEhvdGVsUmVzdWx0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Vladimir/OneDrive/Desktop/Мои разработки/FlightTicketsWeb/FlightTicketsWeb/Views/Shared/_AlertPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9BbGVydFBhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Vladimir/OneDrive/Desktop/Мои разработки/FlightTicketsWeb/FlightTicketsWeb/Views/Shared/_CssPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Dc3NQYXJ0aWFsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Vladimir/OneDrive/Desktop/Мои разработки/FlightTicketsWeb/FlightTicketsWeb/Views/Shared/_Footer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Gb290ZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Vladimir/OneDrive/Desktop/Мои разработки/FlightTicketsWeb/FlightTicketsWeb/Views/Shared/_Header.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9IZWFkZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Vladimir/OneDrive/Desktop/Мои разработки/FlightTicketsWeb/FlightTicketsWeb/Views/Shared/_JsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Kc1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Vladimir/OneDrive/Desktop/Мои разработки/FlightTicketsWeb/FlightTicketsWeb/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Vladimir/OneDrive/Desktop/Мои разработки/FlightTicketsWeb/FlightTicketsWeb/Views/Shared/_MetaPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9NZXRhUGFydGlhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Vladimir/OneDrive/Desktop/Мои разработки/FlightTicketsWeb/FlightTicketsWeb/Views/Travel/Istanbul.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHJhdmVsXElzdGFuYnVsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Vladimir/OneDrive/Desktop/Мои разработки/FlightTicketsWeb/FlightTicketsWeb/Views/Travel/Maldives.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHJhdmVsXE1hbGRpdmVzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Vladimir/OneDrive/Desktop/Мои разработки/FlightTicketsWeb/FlightTicketsWeb/Views/Travel/St_Petersburg.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHJhdmVsXFN0X1BldGVyc2J1cmcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Vladimir/OneDrive/Desktop/Мои разработки/FlightTicketsWeb/FlightTicketsWeb/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Vladimir/OneDrive/Desktop/Мои разработки/FlightTicketsWeb/FlightTicketsWeb/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 

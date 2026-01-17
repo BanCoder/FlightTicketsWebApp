@@ -1,0 +1,8 @@
+﻿@if (TempData["ShowAlert"] != null)
+{
+    <input type="hidden" id="tempDataAlert" 
+           value='@Json.Serialize(new { 
+               showAlert = TempData["ShowAlert"], 
+               message = TempData["SuccessMessage"] 
+           })' />
+}

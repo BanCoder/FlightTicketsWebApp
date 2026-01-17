@@ -1,0 +1,43 @@
+.destination-header {
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/img/popSPB.png') center/cover;
+    height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+    margin-bottom: 30px;
+}
+        
+.attraction-card {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    margin-bottom: 30px;
+    background: white;
+}
+        
+.attraction-image {
+    height: 600px;
+    object-fit: cover;
+    width: 100%;
+}
+        
+.attraction-info {
+    padding: 20px;
+}
+        
+.weather-card {
+    background-color: var(--accent-color);
+    color: white;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+        
+.booking-card {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}

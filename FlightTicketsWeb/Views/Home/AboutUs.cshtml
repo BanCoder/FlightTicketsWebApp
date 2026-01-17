@@ -1,0 +1,114 @@
+﻿@{
+    ViewData["Title"] = "О компании";
+}
+@inject IConfiguration configuration
+@{
+    AppConfiguration? appConfiguration = configuration.GetSection("Project").Get<AppConfiguration>();
+}
+<section class="about-section">
+    <div class="w3-container">
+        <div class="w3-center" style="margin-bottom: 50px;">
+            <h1 class="section-title">О компании @appConfiguration?.Company.CompanyName</h1>
+            <p style="max-width: 800px; margin: 0 auto; font-size: 18px;">
+                Мы создаем незабываемые путешествия с 2025 года, предлагая лучшие решения для вашего комфорта
+            </p>
+        </div>
+
+        <div class="about-card">
+            <div class="w3-row-padding">
+                <div class="w3-col m6">
+                    <h2><i class="fas fa-history" style="color: var(--primary-color);"></i> Наша история</h2>
+                    <p>@appConfiguration?.Company.CompanyName был основан в 2025 году группой студентов Морского технического университета, которые хотели изменить подход к организации путешествий. Начиная с небольшого офиса в Санкт-Петербурге, мы выросли до крупнейшего онлайн-сервиса по бронированию авиабилетов и отелей в России.</p>
+                    <p>Сегодня мы сотрудничаем с более чем 200 авиакомпаниями и 20 000 отелей по всему миру, помогая нашим клиентам находить лучшие предложения.</p>
+                </div>
+                <div class="w3-col m6">
+                    <img src="~/img/office.png" alt="Наш офис" style="width:100%; border-radius: 10px;">
+                </div>
+            </div>
+        </div>
+
+        <div class="about-card">
+            <h2 class="w3-center" style="margin-bottom: 30px;">Почему выбирают нас</h2>
+            <div class="w3-row-padding">
+                <div class="w3-col m4 w3-padding">
+                    <div class="w3-padding">
+                        <i class="fas fa-bolt" style="font-size: 50px; color: var(--primary-color); margin-bottom: 20px;"></i>
+                        <h3>Мгновенное бронирование</h3>
+                        <p>Подтверждение бронирования происходит моментально без ожидания и бумажной волокиты.</p>
+                    </div>
+                </div>
+                <div class="w3-col m4 w3-padding">
+                    <div class="w3-padding">
+                        <i class="fas fa-percent" style="font-size: 50px; color: var(--primary-color); margin-bottom: 20px;"></i>
+                        <h3>Лучшие цены</h3>
+                        <p>Гарантируем самые низкие цены на рынке или возвращаем разницу благодаря нашим специальным соглашениям.</p>
+                    </div>
+                </div>
+                <div class="w3-col m4 w3-padding">
+                    <div class="w3-padding">
+                        <i class="fas fa-headset" style="font-size: 50px; color: var(--primary-color); margin-bottom: 20px;"></i>
+                        <h3>Поддержка 24/7</h3>
+                        <p>Наша служба поддержки работает круглосуточно без выходных и праздников на 12 языках.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="about-card">
+            <h2 class="w3-center" style="margin-bottom: 30px;">@appConfiguration?.Company.CompanyName в цифрах</h2>
+            <div class="stats-container">
+                <div class="stat-item">
+                    <div class="stat-number">5M+</div>
+                    <p>Довольных клиентов</p>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">200+</div>
+                    <p>Авиакомпаний-партнеров</p>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">20K</div>
+                    <p>Отелей по всему миру</p>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">24/7</div>
+                    <p>Поддержка клиентов</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="about-card">
+            <h2 class="w3-center" style="margin-bottom: 30px;">Наша команда</h2>
+            <div class="w3-row-padding">
+                <div class="w3-col m3">
+                    <div class="team-member">
+                        <img src="~/img/gosling.jpg" alt="Основатель" class="team-photo">
+                        <h3>Райан Гослинг</h3>
+                        <p>Основатель и CEO</p>
+                    </div>
+                </div>
+                <div class="w3-col m3">
+                    <div class="team-member">
+                        <img src="~/img/mcConaughey.jpg" alt="Технический директор" class="team-photo">
+                        <h3>Метью Макконахи</h3>
+                        <p>Технический директор</p>
+                    </div>
+                </div>
+                <div class="w3-col m3">
+                    <div class="team-member">
+                        <img src="~/img/bateman.jpg" alt="Директор по маркетингу" class="team-photo">
+                        <h3>Кристиан Бейл</h3>
+                        <p>Директор по маркетингу</p>
+                    </div>
+                </div>
+                <div class="w3-col m3">
+                    <div class="team-member">
+                        <img src="~/img/scala.jpg" alt="Директор по клиентскому сервису" class="team-photo">
+                        <h3>Дуэйн Джонсон</h3>
+                        <p>Директор по сервису</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <link rel="stylesheet" href="~/css/aboutUs.css">
+</section>

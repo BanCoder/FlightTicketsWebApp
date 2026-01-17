@@ -1,0 +1,95 @@
+﻿@using FlightTicketsWeb.Models
+@model List<HotelViewModel>
+@{
+    ViewData["Title"] = "Результаты поиска отелей";
+    var searchModel = ViewBag.SearchModel as HotelSearchModel;
+}
+
+<section class="w3-container w3-padding-64">
+    <div class="w3-container">
+        <h2 class="section-title">
+            <i class="fas fa-hotel"></i> Результаты поиска отелей
+            @if (searchModel != null && !string.IsNullOrEmpty(searchModel.Direction))
+            {
+                <span style="font-size: 18px; color: #666;">
+                    @searchModel.Direction
+                    @if (searchModel.Date.HasValue)
+                    {
+                        @searchModel.Date?.ToString("dd.MM.yyyy")
+                    }
+                </span>
+            }
+        </h2>
+
+        @if (Model.Any())
+        {
+            <div class="w3-row-padding">
+                @foreach (var hotel in Model)
+                {
+                    <div class="w3-col s12 m6 l4 w3-margin-bottom">
+                        <div class="w3-card w3-white w3-round-large hotel-card">
+                            <div class="hotel-image-container">
+                                <img src="@hotel.ImageUrl" class="hotel-image" alt="@hotel.HotelName" />
+                                @if (hotel.Stars.HasValue)
+                                {
+                                    <div class="hotel-stars">
+                                        @for (int i = 0; i < hotel.Stars.Value; i++)
+                                        {
+                                            <i class="fas fa-star" style="color: #FFD700;"></i>
+                                        }
+                                    </div>
+                                }
+                            </div>
+
+                            <div class="w3-padding">
+                                <h3 style="margin-top: 0;">@hotel.HotelName</h3>
+                                <p>
+                                    <i class="fas fa-map-marker-alt" style="color: var(--primary-color);"></i>
+                                    @hotel.City, @hotel.Address
+                                </p>
+
+                                <div class="w3-row" style="margin: 15px 0;">
+                                    <div class="w3-col s6">
+                                        <p style="margin: 5px 0;">
+                                            <i class="fas fa-bed"></i>
+                                            <strong>Номеров доступно:</strong> @hotel.RoomsAvailable
+                                        </p>
+                                        @if (!string.IsNullOrEmpty(hotel.Category))
+                                        {
+                                            <p style="margin: 5px 0;">
+                                                <i class="fas fa-tag"></i>
+                                                <strong>Категория:</strong> @hotel.Category
+                                            </p>
+                                        }
+                                    </div>
+                                    <div class="price-container" style="text-align: right; margin-left: 15px;">
+                                        <h3 style="color: var(--primary-color); margin: 0;">
+                                            @hotel.CostPerNight.ToString("N0") ₽
+                                        </h3>
+                                        <p style="margin: 5px 0; font-size: 14px;">за ночь</p>
+                                    </div>
+                                </div>
+
+                                <a asp-controller="Booking" asp-action="BookOnlyHotel" asp-route-hotelId="@hotel.HotelId" class="w3-button search-btn w3-block" onclick="bookHotel(@hotel.HotelId)">
+                                    <i class="fas fa-calendar-check"></i> Забронировать
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+        else
+        {
+            <div class="w3-panel w3-white w3-padding-32 w3-round-large w3-center">
+                <i class="fas fa-hotel" style="font-size: 64px; color: #ccc; margin-bottom: 20px;"></i>
+                <h3>Отели не найдены</h3>
+                <p>Попробуйте изменить параметры поиска</p>
+                <a href="@Url.Action("Index", "Home")" class="w3-button search-btn">
+                    <i class="fas fa-search"></i> Новый поиск
+                </a>
+            </div>
+        }
+    </div>
+    <link rel="stylesheet" href="~/css/searchHotel.css">
+</section>

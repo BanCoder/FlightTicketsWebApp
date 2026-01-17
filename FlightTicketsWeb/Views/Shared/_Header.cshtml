@@ -1,0 +1,37 @@
+﻿@using FlightTicketsWebsite.Infrastructure
+@inject IConfiguration configuration
+@{
+    AppConfiguration? appConfiguration = configuration.GetSection("Project").Get<AppConfiguration>();
+}
+<header class="w3-bar w3-white w3-padding-16 w3-card" style="position: sticky; top: 0; z-index: 100;">
+    <div class="w3-container">
+        <div class="w3-row">
+            <div class="w3-col s6 m6 l6">
+                <a asp-controller= "Home" asp-action="Index"><div class="logo w3-bar-item">@appConfiguration?.Company.CompanyName</div></a>
+            </div>
+            <div class="w3-col s6 m6 l6 w3-right">
+                <button class="w3-button w3-right mobile-menu-btn" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
+
+                <div class="w3-right desktop-menu">
+                    <a asp-controller="Account" asp-action="Entrance" class="w3-bar-item nav-link">Профиль</a>
+                    <a asp-controller="Home" asp-action="AboutUs" class="w3-bar-item nav-link">О нас</a>
+                    <div class="w3-dropdown-hover">
+                        <a href="#" class="w3-bar-item nav-link">Услуги <i class="fas fa-chevron-down"></i></a>
+                        <div class="w3-dropdown-content dropdown-menu">
+                            <a asp-controller="Home" asp-action="Index" class="dropdown-item">Авиабилеты</a>
+                            <a asp-controller="Home" asp-action="Index" class="dropdown-item">Отели</a>
+                            <a asp-controller="Account" asp-action="Promotions" class="dropdown-item">Акции</a>
+                        </div>
+                    </div>
+                    <a href="#contacts" class="w3-bar-item nav-link">Контакты</a>
+                    <a href="/Account/Logout" class="w3-bar-item nav-link" style="color: #666;">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</header>

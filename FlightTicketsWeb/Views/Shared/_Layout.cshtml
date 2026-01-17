@@ -1,0 +1,21 @@
+﻿@inject IConfiguration configuration
+@{
+    AppConfiguration? appConfiguration = configuration.GetSection("Project").Get<AppConfiguration>();
+}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <title>@ViewData["Title"] - @appConfiguration?.Company.CompanyName</title>
+    @await Html.PartialAsync("_MetaPartial")
+    @await Html.PartialAsync("_CssPartial")
+    <link rel="stylesheet" href="~/css/index.css">
+</head>
+<body>
+    @await Html.PartialAsync("_Header")
+    @await Html.PartialAsync("_AlertPartial")
+    @RenderBody() 
+    @await Html.PartialAsync("_Footer")
+    @await Html.PartialAsync("_JsPartial")
+</body>
+
+</html>
