@@ -169,3 +169,4 @@ C:\Users\Vladimir\OneDrive\Desktop\Мои разработки\FlightTicketsWeb\
 C:\Users\Vladimir\OneDrive\Desktop\Мои разработки\FlightTicketsWeb\FlightTicketsWeb\obj\Debug\net8.0\FlightTicketsWeb.RazorAssemblyInfo.cs
 C:\Users\Vladimir\OneDrive\Desktop\Мои разработки\FlightTicketsWeb\FlightTicketsWeb\bin\Debug\net8.0\BCrypt.Net-Next.dll
 C:\Users\Vladimir\OneDrive\Desktop\Мои разработки\FlightTicketsWeb\FlightTicketsWeb\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+C:\Users\Vladimir\OneDrive\Desktop\Мои разработки\FlightTicketsWeb\FlightTicketsWeb\obj\Debug\net8.0\FlightTicketsWeb.sourcelink.json
