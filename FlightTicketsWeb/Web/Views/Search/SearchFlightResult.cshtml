@@ -1,0 +1,87 @@
+﻿@using FlightTicketsWeb.Web.ViewModels
+@model List<FlightViewModel>
+@{
+    ViewData["Title"] = "Результаты поиска рейсов";
+    var searchModel = ViewBag.SearchModel as FlightSearchModel;
+}
+
+<section class="w3-container w3-padding-64">
+    <div class="w3-container">
+        <h2 class="section-title">
+            <i class="fas fa-search"></i> Результаты поиска
+            @if (searchModel != null)
+            {
+                <span style="font-size: 18px; color: #666;">
+                    @searchModel.FromCity → @searchModel.ToCity •
+                    @searchModel.DepartureDate?.ToString("dd.MM.yyyy")
+                </span>
+            }
+        </h2>
+
+        @if (Model.Any())
+        {
+            <div class="w3-row-padding">
+                @foreach (var flight in Model)
+                {
+                    <div class="w3-col s12 w3-margin-bottom">
+                        <div class="w3-card w3-white w3-padding-large w3-round-large flight-card">
+                            <div class="w3-row">
+                                <div class="w3-col s12 m3 l3">
+                                    <div class="w3-padding">
+                                        <h4>@flight.AirlineName</h4>
+                                        <p><strong>@flight.FlightNumber</strong></p>
+                                        <span class="w3-tag w3-round-large @(flight.Class == "Эконом" ? "w3-blue" :flight.Class == "Комфорт" ? "w3-green" : "w3-red")">
+                                    @flight.Class
+                                </span>
+                            </div>
+                        </div>
+                        <div class="w3-col s12 m5 l5">
+                            <div class="w3-row">
+                                <div class="w3-col s4">
+                                    <h4 class="flight-time">@flight.FormattedDepartureTime</h4>
+                                    <p class="flight-city">@flight.DepartureCity</p>
+                                    <small class="flight-date">@flight.DepartureDate.ToString("dd MMM yyyy")</small>
+                                </div>
+                                <div class="w3-col s4 w3-center">
+                                    <i class="fas fa-plane" style="font-size: 24px; color: #666;"></i>
+                                    <p class="flight-duration">@flight.Duration</p>
+                                    <small>@(flight.SeatsAvailable > 0 ? $"Осталось {flight.SeatsAvailable} мест" : "Мест нет")</small>
+                                </div>
+                                <div class="w3-col s4">
+                                    <h4 class="flight-time">@flight.FormattedArrivalTime</h4>
+                                    <p class="flight-city">@flight.ArrivalCity</p>
+                                    <small class="flight-date">@flight.ArrivalDate.ToString("dd MMM yyyy")</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="w3-col s12 m4 l4 w3-center">
+                            <div class="w3-padding">
+                                <h3 style="color: var(--primary-color); margin: 0;">@flight.FormattedPrice</h3>
+                                <p>за пассажира</p>
+                                <a asp-controller="Booking" asp-action="TicketsAndHotelBooking" asp-route-flightId="@flight.FlightId" class="w3-button search-btn w3-block">
+                                    <i class="fas fa-shopping-cart"></i> Выбрать
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+               }
+        </div>
+        }
+        else
+        {
+            <div class="w3-panel w3-white w3-padding-32 w3-round-large w3-center">
+                <i class="fas fa-plane-slash" style="font-size: 64px; color: #ccc; margin-bottom: 20px;"></i>
+                <h3>Рейсы не найдены</h3>
+                <p>Попробуйте изменить параметры поиска</p>
+                <a href="@Url.Action("Index", "Home")" class="w3-button search-btn">
+                    <i class="fas fa-search"></i> Новый поиск
+                </a>
+            </div>
+        }
+    </div>
+    <link rel="stylesheet" href="~/css/searchFlight.css">
+</section>
+

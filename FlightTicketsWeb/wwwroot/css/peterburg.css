@@ -1,5 +1,5 @@
 .destination-header {
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/img/popSPB.png') center/cover;
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/img/travel/popSPB.png') center/cover;
     height: 600px;
     display: flex;
     align-items: center;

@@ -1,0 +1,79 @@
+﻿@using FlightTicketsWeb.Web.ViewModels
+@model RegisterModel
+@{
+    ViewData["Title"] = "Регистрация";
+}
+@inject IConfiguration configuration
+@{
+    AppConfiguration? appConfiguration = configuration.GetSection("Project").Get<AppConfiguration>();
+}
+<section class="hero-section" style="min-height: calc(100vh - 80px); padding: 40px 0; position: relative;">
+    <div class="w3-container">
+        <div class="auth-container" style="position: relative; z-index: 10;">
+            <div class="auth-header">
+                <div class="auth-logo">@appConfiguration?.Company.CompanyName</div>
+                <h2>Создать аккаунт</h2>
+                <p>Зарегистрируйтесь, чтобы получить доступ ко всем возможностям</p>
+            </div>
+
+            <form class="auth-form" asp-action="Registration" method="post">
+                @Html.AntiForgeryToken()
+                <div style="display: flex; gap: 15px; margin-bottom: 15px;">
+                    <div style="flex: 1;">
+                        <label>Имя</label>
+                        <input class="search-input" type="text" asp-for="FirstName"
+                               placeholder="Ваше имя" required style="width: 100%;">
+                               <span asp-validation-for="FirstName" class="text-danger" style="font-size: 12px;"></span>
+                    </div>
+                    <div style="flex: 1;">
+                        <label>Фамилия</label>
+                        <input class="search-input" type="text" asp-for="LastName"
+                               placeholder="Ваша фамилия" required style="width: 100%;">
+                        <span asp-validation-for="LastName" class="text-danger" style="font-size: 12px;"></span>
+                    </div>
+                </div>
+
+                <div style="margin-bottom: 15px;">
+                    <label>Email</label>
+                    <input class="search-input" type="email" asp-for="Email"
+                           placeholder="Ваш email" required style="width: 100%;">
+                    <span asp-validation-for="Email" class="text-danger" style="font-size: 12px;"></span>
+                </div>
+
+                <div style="margin-bottom: 15px;">
+                    <label>Пароль</label>
+                    <input class="search-input" type="password" asp-for="Password"
+                           placeholder="Не менее 8 символов" required minlength="8" style="width: 100%;">
+                    <span asp-validation-for="Password" class="text-danger" style="font-size: 12px;"></span>
+                </div>
+
+                <div style="margin-bottom: 20px;">
+                    <label>Подтвердите пароль</label>
+                    <input class="search-input" type="password" asp-for="ConfirmPassword"
+                           placeholder="Повторите пароль" required style="width: 100%;">
+                    <span asp-validation-for="ConfirmPassword" class="text-danger" style="font-size: 12px;"></span>
+                </div>
+                <div style="margin-bottom: 20px;">
+                    <label>
+                        <input type="checkbox" required style="margin-right: 8px;">
+                        Я согласен с <a href="#" style="color: var(--accent-color);">условиями использования</a>
+                    </label>
+                </div>
+                @if (!ViewData.ModelState.IsValid && ViewData.ModelState.Values.Any(v => v.Errors.Count > 0))
+                {
+                    <div class="w3-panel w3-red w3-round" style="margin-bottom: 15px; padding: 10px;">
+                        @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                        {
+                            <p style="margin: 0;">@error.ErrorMessage</p>
+                        }
+                    </div>
+                }
+                <button type="submit" class="w3-button search-btn w3-block"
+                        style="margin-top: 15px; width: 100%;">
+                    <i class="fas fa-user-plus"></i> Зарегистрироваться
+                </button>
+            </form>
+        </div>
+    </div>
+    <link rel="stylesheet" href="~/css/profile.css">
+</section>

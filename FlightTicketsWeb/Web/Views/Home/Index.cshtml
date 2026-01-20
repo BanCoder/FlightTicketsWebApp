@@ -1,0 +1,214 @@
+﻿@using FlightTicketsWeb.Web.ViewModels
+@model IndexViewModel
+@{
+    ViewData["Title"] = "Бронирование билетов и отелей";
+}
+    <section class="hero-section">
+        <div class="w3-container">
+            <div class="search-container">
+                <div class="w3-row w3-center">
+                    <div class="w3-col s6 m6 l6 tab-button active" onclick="openTab('flights')">
+                        <h3><i class="fas fa-plane"></i> Авиабилеты</h3>
+                    </div>
+                    <div class="w3-col s6 m6 l6 tab-button" onclick="openTab('hotels')">
+                        <h3><i class="fas fa-hotel"></i> Отели</h3>
+                    </div>
+                </div>
+
+                <form asp-action="FlightSearch" asp-controller="Search" method="get" id="flights" class="w3-container tab-content" style="display:block">
+                    <div class="w3-row-padding" style="margin-top:30px">
+                        <div class="w3-col s12 m6 l3 w3-padding">
+                            <div class="w3-row">
+                                <label class="w3-col s12" style="text-align: left; margin-bottom: 8px; font-weight: 500;">Откуда</label>
+                                <div class="w3-col s12">
+                                    <input asp-for="FlightSearch.FromCity" class="w3-input search-input" type="text" placeholder="Город">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w3-col s12 m6 l3 w3-padding">
+                            <div class="w3-row">
+                                <label class="w3-col s12" style="text-align: left; margin-bottom: 8px; font-weight: 500;">Куда</label>
+                                <div class="w3-col s12">
+                                    <input asp-for="FlightSearch.ToCity" class="w3-input search-input" type="text" placeholder="Город">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w3-col s12 m6 l3 w3-padding">
+                            <div class="w3-row">
+                                <label class="w3-col s12" style="text-align: left; margin-bottom: 8px; font-weight: 500;">Дата вылета</label>
+                                <div class="w3-col s12">
+                                    <input asp-for="FlightSearch.DepartureDate" class="w3-input search-input" type="date">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w3-col s12 m6 l3 w3-padding">
+                            <div class="w3-row">
+                                <label class="w3-col s12" style="text-align: left; margin-bottom: 8px; font-weight: 500;">Дата прилёта</label>
+                                <div class="w3-col s12">
+                                    <input asp-for="FlightSearch.ReturnDate" class="w3-input search-input" type="date">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w3-row-padding" style="margin-top:20px">
+                        <div class="w3-col s12 m6 l3 w3-padding">
+                            <div class="w3-row">
+                                <label class="w3-col s12" style="text-align: left; margin-bottom: 8px; font-weight: 500;">Пассажиры</label>
+                                <div class="w3-col s12">
+                                    <select asp-for="FlightSearch.PassangersCount" class="w3-input search-input">
+                                        <option value="1">1 взрослый</option>
+                                        <option value="2">2 взрослых</option>
+                                        <option value ="3">Семья (2+1)</option>
+                                        <option value="4">Группа (4+)</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w3-col s12 m6 l3 w3-padding">
+                            <div class="w3-row">
+                                <label class="w3-col s12" style="text-align: left; margin-bottom: 8px; font-weight: 500;">Класс</label>
+                                <div class="w3-col s12">
+                                    <select asp-for="FlightSearch.Class" class="w3-input search-input">
+                                        <option value="Эконом">Эконом</option>
+                                        <option value="Комфорт">Комфорт</option>
+                                        <option value="Бизнес">Бизнес</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w3-col s12 m12 l6 w3-padding">
+                            <button type="submit" class="w3-button search-btn w3-block" style="margin-top: 27px;">
+                                <i class="fas fa-search"></i> Найти билеты
+                            </button>
+                        </div>
+                    </div>
+                </form>
+
+                <form asp-action="HotelSearch" asp-controller="Search" method="get" id="hotels" class="w3-container tab-content" style="display:none">
+                    <div class="w3-row-padding" style="margin-top:30px">
+                        <div class="w3-col s12 m6 l4 w3-padding">
+                            <div class="w3-row">
+                                <label class="w3-col s12" style="text-align: left; margin-bottom: 8px; font-weight: 500;">Направление</label>
+                                <div class="w3-col s12">
+                                    <input asp-for="HotelSearch.Direction" class="w3-input search-input" type="text" placeholder="Город или отель">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w3-col s12 m6 l4 w3-padding">
+                            <div class="w3-row">
+                                <label class="w3-col s12" style="text-align: left; margin-bottom: 8px; font-weight: 500;">Даты</label>
+                                <div class="w3-col s12">
+                                    <input asp-for="HotelSearch.Date" class="w3-input search-input" type="date">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w3-col s12 m6 l4 w3-padding">
+                            <div class="w3-row">
+                                <label class="w3-col s12" style="text-align: left; margin-bottom: 8px; font-weight: 500;">Гости</label>
+                                <div class="w3-col s12">
+                                    <select asp-for="HotelSearch.Guests" class="w3-input search-input">
+                                        <option value="1">1 комната, 1 взрослый</option>
+                                        <option value="2">1 комната, 2 взрослых</option>
+                                        <option value="3">2 комнаты, 4 взрослых</option>
+                                        <option value="4">Семейный номер</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w3-row-padding" style="margin-top:20px">
+                        <div class="w3-col s12 m6 l3 w3-padding">
+                            <div class="w3-row">
+                                <label class="w3-col s12" style="text-align: left; margin-bottom: 8px; font-weight: 500;">Категория</label>
+                                <div class="w3-col s12">
+                                    <select asp-for="HotelSearch.Category" class="w3-input search-input">
+                                        <option value="">Любая</option>
+                                        <option value="3">3 звезды</option>
+                                        <option value="4">4 звезды</option>
+                                        <option value="5">5 звезд</option>
+                                        <option value="Апартаменты">Апартаменты</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w3-col s12 m12 l9 w3-padding">
+                            <button type="submit" class="w3-button search-btn w3-block" style="margin-top: 27px;">
+                                <i class="fas fa-search"></i> Найти отели
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section class="w3-container w3-padding-64">
+        <div class="w3-container">
+            <h2 class="section-title">Популярные направления</h2>
+            <div class="w3-row-padding">
+                <div class="w3-col s12 m6 l4 w3-padding">
+                    <div class="destination-card" onclick="window.location.href='@Url.Action("St_Petersburg", "Travel")'">
+                        <img src="~/img/travel/stpeterburg_main.png" class="destination-img">
+                        <div class="destination-info">
+                            <h3>Москва → Санкт-Петербург</h3>
+                            <p>От <span class="destination-price">4 950 ₽</span></p>
+                            <p><i class="fas fa-plane"></i> 1ч 30м в пути</p>
+                            <button class="w3-button w3-small w3-border w3-round" style="margin-top: 10px;">Выбрать рейс</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="w3-col s12 m6 l4 w3-padding">
+                <div class="destination-card" onclick="window.location.href='@Url.Action("Istanbul", "Travel")'">
+                        <img src="~/img/travel/stambul_main.png" class="destination-img">
+                        <div class="destination-info">
+                            <h3>Санкт-Петербург → Стамбул</h3>
+                            <p>От <span class="destination-price">19 495 ₽</span></p>
+                            <p><i class="fas fa-plane"></i>4ч 35м в пути</p>
+                            <button class="w3-button w3-small w3-border w3-round" style="margin-top: 10px;">Выбрать рейс</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="w3-col s12 m6 l4 w3-padding">
+                <div class="destination-card" onclick="window.location.href='@Url.Action("Maldives", "Travel")'">
+                        <img src="~/img/travel/maldives_main.png" class="destination-img">
+                        <div class="destination-info">
+                            <h3>Москва → Мале</h3>
+                            <p>От <span class="destination-price">25 888 ₽</span></p>
+                            <p><i class="fas fa-plane"></i> 8ч в пути</p>
+                            <button class="w3-button w3-small w3-border w3-round" style="margin-top: 10px;">Выбрать рейс</button>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+        </div>
+    </section>
+
+
+    <section class="w3-container w3-padding-64 w3-light-grey">
+        <div class="w3-container">
+            <h2 class="section-title">Почему выбирают нас</h2>
+            <div class="w3-row-padding w3-center">
+                <div class="w3-col s12 m4 l4 w3-padding">
+                    <div class="w3-padding">
+                        <i class="fas fa-bolt" style="font-size: 50px; color: var(--primary-color); margin-bottom: 20px;"></i>
+                        <h3>Мгновенное бронирование</h3>
+                        <p>Подтверждение бронирования происходит моментально без ожидания</p>
+                    </div>
+                </div>
+                <div class="w3-col s12 m4 l4 w3-padding">
+                    <div class="w3-padding">
+                        <i class="fas fa-percent" style="font-size: 50px; color: var(--primary-color); margin-bottom: 20px;"></i>
+                        <h3>Лучшие цены</h3>
+                        <p>Гарантируем самые низкие цены на рынке или возвращаем разницу</p>
+                    </div>
+                </div>
+                <div class="w3-col s12 m4 l4 w3-padding">
+                    <div class="w3-padding">
+                        <i class="fas fa-headset" style="font-size: 50px; color: var(--primary-color); margin-bottom: 20px;"></i>
+                        <h3>Поддержка 24/7</h3>
+                        <p>Наша служба поддержки работает круглосуточно без выходных</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>

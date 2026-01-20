@@ -1,11 +1,16 @@
-using FlightTicketsWeb.Repository;
-using FlightTicketsWeb.Repository.Access;
+using FlightTicketsWeb.Core.Interfaces;
+using FlightTicketsWeb.Infrastructure.Services;
+using FlightTicketsWeb.Shared.Helpers;
+using FlightTicketsWeb.Web.ViewModels.Persistence;
 using FlightTicketsWebsite.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews().AddRazorOptions(options => {
+	options.ViewLocationFormats.Add("/Web/Views/{1}/{0}.cshtml");
+	options.ViewLocationFormats.Add("/Web/Views/Shared/{0}.cshtml");
+});
 builder.Services.AddHttpContextAccessor(); 
 builder.Services.Configure<AppConfiguration>(builder.Configuration.GetSection("Project"));
 builder.Services.AddSingleton<IConfiguration>(builder.Configuration);
@@ -27,6 +32,7 @@ builder.Services.AddAuthorization(options =>
 	options.AddPolicy("AdminOnly", policy => policy.RequireClaim(ClaimTypes.Role,"admin"));
 });
 builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<IWeatherService, WeatherService>();
 var app = builder.Build();
 app.UseStaticFiles();
 app.UseRouting();

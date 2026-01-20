@@ -1,0 +1,105 @@
+﻿@using FlightTicketsWeb.Web.ViewModels
+@model BookingModel
+@{
+    ViewData["Title"] = "Бронирование отеля";
+}
+
+<div class="booking-card-container">
+    <div class="booking-card">
+        <div class="booking-card-header">
+            <h2><i class="fas fa-hotel"></i> Бронирование отеля</h2>
+            <p>@ViewBag.SelectedHotel.HotelName, @ViewBag.SelectedHotel.CityName</p>
+        </div>
+
+        <form method="post" asp-action="BookOnlyHotelPost" asp-controller="Booking" class="booking-form">
+            <input type="hidden" name="HotelId" value="@ViewBag.HotelId" />
+
+            <section class="booking-section">
+                <h3 class="section-title">
+                    <i class="fas fa-user"></i> Личные данные
+                </h3>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Паспорт </label>
+                        <input type="text" asp-for="PassportNum" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Фамилия </label>
+                        <input type="text" asp-for="Surname" class="form-input" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Имя </label>
+                        <input type="text" asp-for="FirstName" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Отчество </label>
+                        <input type="text" asp-for="LastName" class="form-input" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Дата рождения </label>
+                        <input type="date" asp-for="BirthDate" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Пол </label>
+                        <select asp-for="Sex" class="form-input" required>
+                            <option value="Мужской">Мужской</option>
+                            <option value="Женский">Женский</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Телефон</label>
+                        <input type="tel" asp-for="Phone" class="form-input">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Email</label>
+                        <input type="email" asp-for="Email" class="form-input">
+                    </div>
+                </div>
+            </section>
+
+            <div class="booking-section">
+                <h3 class="section-title">
+                    <i class="fas fa-calendar"></i> Даты проживания
+                </h3>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Дата заезда </label>
+                        <input type="date" name="CheckIn" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Дата выезда </label>
+                        <input type="date" name="CheckOut" class="form-input" required>
+                    </div>
+                </div>
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-check-circle"></i> Забронировать отель
+                </button>
+                <p class="form-note">
+                    <i class="fas fa-info-circle"></i> Поля отмеченные * обязательны для заполнения
+                </p>
+            </div>
+           
+        </form>
+        <link rel="stylesheet" href="~/css/booking.css">
+        <script src="~/js/booking.js"></script>
+    </div>
+</div>
+<div id="alertData"
+     data-show-alert="@(ViewBag.ShowAlert == true ? "true" : "false")"
+     data-message="@ViewBag.SuccessMessage"
+     data-code="@ViewBag.BookingCode"
+     style="display: none;">
+</div>
+
