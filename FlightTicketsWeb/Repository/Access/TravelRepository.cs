@@ -79,7 +79,7 @@ namespace FlightTicketsWeb.Repository.Access
 				{
 					query = query.Where(h => h.Stars == stars);
 				}
-				else if (searchModel.Category.ToLower() == "апартаменты" || searchModel.Category == "")
+				else if (searchModel.Category.ToLower() == "апартаменты")
 				{
 					query = query.Where(h => h.Category == null || h.Category.Contains("Апартаменты"));
 				}
