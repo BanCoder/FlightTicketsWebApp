@@ -1,4 +1,5 @@
-﻿using FlightTicketsWeb.Web.ViewModels.Weather;
+﻿using FlightTicketsWeb.Core.Entities;
+using FlightTicketsWeb.Web.ViewModels.Weather;
 
 namespace FlightTicketsWeb.Web.ViewModels
 {
@@ -15,6 +16,7 @@ namespace FlightTicketsWeb.Web.ViewModels
 		public decimal Price { get; set; }
 		public int SeatsAvailable { get; set; }
 		public WeatherData? Weather { get; set; }
+		public Airline? AirlineUrl { get; set; }
 
 
 		public string FormattedDepartureTime => DepartureDate.ToString("HH:mm");

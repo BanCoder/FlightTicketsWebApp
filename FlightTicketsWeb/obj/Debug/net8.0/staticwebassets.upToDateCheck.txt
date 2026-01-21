@@ -9,6 +9,11 @@ wwwroot\css\promotions.css
 wwwroot\css\searchFlight.css
 wwwroot\css\searchHotel.css
 wwwroot\css\stambul.css
+wwwroot\img\airlines\airflot_logo.jpg
+wwwroot\img\airlines\pobeda_logo.jpg
+wwwroot\img\airlines\red_wings_logo.jpg
+wwwroot\img\airlines\s_seven_logo.jpg
+wwwroot\img\airlines\ural_avialinii_logo.jpg
 wwwroot\img\creators\bateman.jpg
 wwwroot\img\creators\gosling.jpg
 wwwroot\img\creators\mcConaughey.jpg

@@ -28,7 +28,7 @@
                             <div class="w3-row">
                                 <div class="w3-col s12 m3 l3">
                                     <div class="w3-padding">
-                                        <h4>@flight.AirlineName</h4>
+                                        <h4><img src="@flight.AirlineUrl?.LogoUrl" class="airline-image" alt="@flight.AirlineName" style="width: 40px; height: 40px; border-radius: 50%; object-fit: contain;" /> @flight.AirlineName</h4>
                                         <p><strong>@flight.FlightNumber</strong></p>
                                         <span class="w3-tag w3-round-large @(flight.Class == "Эконом" ? "w3-blue" :flight.Class == "Комфорт" ? "w3-green" : "w3-red")">
                                     @flight.Class

@@ -28,13 +28,14 @@ namespace FlightTicketsWeb.Web.Controllers
 				FlightId = f.FlightId,
 				FlightNumber = f.FlightNumber,
 				AirlineName = f.AirlineNameNavigation?.CompName ?? f.AirlineName,
+				AirlineUrl = f.AirlineNameNavigation,
 				DepartureCity = f.DepartureCityNavigation?.CityName ?? f.DepartureCity,
 				ArrivalCity = f.ArrivalCityNavigation?.CityName ?? f.ArrivalCity,
 				DepartureDate = f.DepartureDate,
 				ArrivalDate = f.ArrivalDate,
 				Class = f.Class,
 				Price = (decimal)f.Price,
-				SeatsAvailable = (int)f.SeatsAvailable
+				SeatsAvailable = (int)f.SeatsAvailable,
 			}).ToList();
 
 			ViewBag.SearchModel = searchModel;
