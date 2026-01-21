@@ -37,7 +37,7 @@
                             <div class="w3-row">
                                 <label class="w3-col s12" style="text-align: left; margin-bottom: 8px; font-weight: 500;">Дата вылета</label>
                                 <div class="w3-col s12">
-                                    <input asp-for="FlightSearch.DepartureDate" class="w3-input search-input" type="date">
+                                    <input asp-for="FlightSearch.DepartureDate" class="w3-input search-input" type="date" min="@DateTime.Today.ToString("yyyy-MM-dd")">
                                 </div>
                             </div>
                         </div>
@@ -45,7 +45,7 @@
                             <div class="w3-row">
                                 <label class="w3-col s12" style="text-align: left; margin-bottom: 8px; font-weight: 500;">Дата прилёта</label>
                                 <div class="w3-col s12">
-                                    <input asp-for="FlightSearch.ReturnDate" class="w3-input search-input" type="date">
+                                    <input asp-for="FlightSearch.ReturnDate" class="w3-input search-input" type="date" min="@DateTime.Today.ToString("yyyy-MM-dd")">
                                 </div>
                             </div>
                         </div>
@@ -98,7 +98,7 @@
                             <div class="w3-row">
                                 <label class="w3-col s12" style="text-align: left; margin-bottom: 8px; font-weight: 500;">Даты</label>
                                 <div class="w3-col s12">
-                                    <input asp-for="HotelSearch.Date" class="w3-input search-input" type="date">
+                                    <input asp-for="HotelSearch.Date" class="w3-input search-input" type="date" min="@DateTime.Today.ToString("yyyy-MM-dd")">
                                 </div>
                             </div>
                         </div>
