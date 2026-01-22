@@ -14,7 +14,7 @@ namespace FlightTicketsWeb.Infrastructure.Services
 		{
 			_configuration = configuration;
 		}
-		public void SendSuccessEmail(string userLogin, string firstName)
+		public void SendSuccessEmail(string userLogin, string firstName, string bookingCode)
 		{
 			string emailDomain = GetEmailDomain(userLogin);
 			AppConfiguration? appConfiguration = _configuration.GetSection("Project").Get<AppConfiguration>();
@@ -42,7 +42,7 @@ namespace FlightTicketsWeb.Infrastructure.Services
 					mailMessage.From = new MailAddress(smtpConfiguration.AdminLogin);
 					mailMessage.To.Add(userLogin);
 					mailMessage.Subject = "Подтверждение бронирования";
-					mailMessage.Body = $"Здравствуйте, {firstName}!\r\nВаша бронь прошла успешно! Спасибо, что выбрали наш серивис.\r\n\n\nС уважением, компания AirTravel."; 
+					mailMessage.Body = $"Здравствуйте, {firstName}!\nВаша бронь прошла успешно! Код вашей брони: {bookingCode}.\nСпасибо, что выбрали наш серивис.\r\n\n\nС уважением, компания AirTravel."; 
 					smtpClient.Send(mailMessage);
 				}
 			}

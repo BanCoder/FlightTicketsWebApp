@@ -90,7 +90,7 @@ namespace FlightTicketsWeb.Web.Controllers
 				}
 				try
 				{
-					_emailService.SendSuccessEmail(model.Email, model.FirstName);
+					_emailService.SendSuccessEmail(model.Email, model.FirstName, booking.BookingCode);
 				}
 				catch (Exception ex)
 				{
@@ -166,7 +166,7 @@ namespace FlightTicketsWeb.Web.Controllers
 				}
 				try
 				{
-					_emailService.SendSuccessEmail(model.Email, model.FirstName);
+					_emailService.SendSuccessEmail(model.Email, model.FirstName, booking.BookingCode);
 				}
 				catch (Exception ex)
 				{
