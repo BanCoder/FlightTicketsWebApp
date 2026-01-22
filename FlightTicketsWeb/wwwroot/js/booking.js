@@ -12,10 +12,5 @@
         const code = alertData.dataset.code || '';
 
         alert(`${message}\nКод бронирования: ${code}`);
-        const bookingForm = document.getElementById('bookingForm');
-        if (bookingForm) {
-            bookingForm.reset();
-        }
-        alertData.dataset.showAlert = 'false';
     }
 });

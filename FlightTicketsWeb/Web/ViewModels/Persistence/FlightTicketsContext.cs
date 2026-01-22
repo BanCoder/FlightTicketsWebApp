@@ -121,6 +121,7 @@ public partial class FlightTicketsContext : DbContext
 
         modelBuilder.Entity<Flight>(entity =>
         {
+            entity.ToTable("Flight", t => t.UseSqlOutputClause(false));
             entity.HasKey(e => e.FlightId).HasName("PK__Flight__E37057658FB2D292");
 
             entity.ToTable("Flight");

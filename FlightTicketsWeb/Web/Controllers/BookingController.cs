@@ -15,10 +15,12 @@ namespace FlightTicketsWeb.Web.Controllers
 	{
 		private readonly ITravelRepository _repository;
 		private readonly IAuthService _authService; 
-		public BookingController(ITravelRepository repository, IAuthService authService)
+		private readonly IEmailService _emailService;
+		public BookingController(ITravelRepository repository, IAuthService authService, IEmailService emailService)
 		{
 			_repository = repository;
 			_authService = authService;
+			_emailService = emailService;
 		}
 		[HttpGet]
 		public async Task<IActionResult> TicketsAndHotelBooking(int flightId)
@@ -86,8 +88,16 @@ namespace FlightTicketsWeb.Web.Controllers
 				{
 					await _repository.UpdateHotelRoomsAsync(model.HotelId.Value, -1);
 				}
+				try
+				{
+					_emailService.SendSuccessEmail(model.Email, model.FirstName);
+				}
+				catch (Exception ex)
+				{
+					ViewBag.ErrorMessage = "Не удалось отправить подтверждение на email";
+				}
 				ViewBag.ShowAlert = true;
-				ViewBag.SuccessMessage = "Бронирование успешно создано!";
+				ViewBag.SuccessMessage = "Бронирование успешно создано! Мы отправили Вам сообщение на почту.";
 				ViewBag.BookingCode = booking.BookingCode;
 				
 				return View(model);
@@ -154,9 +164,16 @@ namespace FlightTicketsWeb.Web.Controllers
 				{
 					await _repository.UpdateHotelRoomsAsync(model.HotelId.Value, -1);
 				}
-
+				try
+				{
+					_emailService.SendSuccessEmail(model.Email, model.FirstName);
+				}
+				catch (Exception ex)
+				{
+					ViewBag.EmailError = "Не удалось отправить подтверждение на email";
+				}
 				ViewBag.BookingCode = booking.BookingCode;
-				ViewBag.SuccessMessage = "Отель забронирован!";
+				ViewBag.SuccessMessage = "Отель забронирован! Мы отправили Вам сообщение на почту.";
 				ViewBag.ShowAlert = true;
 				ViewBag.SelectedHotel = hotel;
 				return View("HotelOnlyBooking", model);

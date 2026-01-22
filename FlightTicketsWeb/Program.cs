@@ -33,6 +33,7 @@ builder.Services.AddAuthorization(options =>
 });
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IWeatherService, WeatherService>();
+builder.Services.AddScoped<IEmailService, EmailService>(); 
 var app = builder.Build();
 app.UseStaticFiles();
 app.UseRouting();

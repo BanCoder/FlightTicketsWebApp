@@ -1,9 +1,12 @@
-﻿namespace FlightTicketsWebsite.Infrastructure
+﻿using FlightTicketsWeb.Web.ViewModels.Email;
+
+namespace FlightTicketsWebsite.Infrastructure
 {
 	public class AppConfiguration
 	{
 		public Company Company { get; set; } = new Company();
-		public APISettings APISettings { get; set; } = new APISettings(); 
+		public APISettings APISettings { get; set; } = new APISettings();
+		public SmtpData SmtpSettings { get; set; } = new SmtpData(); 
 	}
 	public class Company
 	{
