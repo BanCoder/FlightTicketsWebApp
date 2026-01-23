@@ -79,3 +79,6 @@ wwwroot\img\travel\stpeterburg_main.png
 wwwroot\js\authAlert.js
 wwwroot\js\booking.js
 wwwroot\js\index.js
+wwwroot\video\Istanbul.mp4
+wwwroot\video\Maldives.mp4
+wwwroot\video\Saint_Petersburg.mp4

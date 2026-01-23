@@ -27,6 +27,7 @@
     <Folder Include="wwwroot\img\hotels\" />
     <Folder Include="wwwroot\img\creators\" />
     <Folder Include="wwwroot\img\travel\" />
+    <Folder Include="wwwroot\video\" />
   </ItemGroup>
 
 </Project>
