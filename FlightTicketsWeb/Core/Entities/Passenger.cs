@@ -13,7 +13,7 @@ public partial class Passenger
 
     public string LastName { get; set; } = null!;
 
-    public DateOnly BirthDate { get; set; }
+    public DateTime BirthDate { get; set; }
 
     public string? Sex { get; set; }
 

@@ -96,6 +96,18 @@ namespace FlightTicketsWeb.Web.Controllers
 				{
 					ViewBag.ErrorMessage = "Не удалось отправить подтверждение на email";
 				}
+				ViewBag.FlightId = model.FlightId ;
+				var flight = await _repository.GetFlightByIdAsync(model.FlightId);
+				if (flight != null)
+				{
+					var hotels = await _repository.SearchHotelAsync(new HotelSearchModel
+					{
+						Direction = flight.ArrivalCity
+					});
+					ViewBag.Hotels = hotels;
+					ViewBag.ArrivalCity = flight.ArrivalCity;
+					ViewBag.DepartureCity = flight.DepartureCity;
+				}
 				ViewBag.ShowAlert = true;
 				ViewBag.SuccessMessage = "Бронирование успешно создано! Мы отправили Вам сообщение на почту.";
 				ViewBag.BookingCode = booking.BookingCode;
@@ -105,7 +117,7 @@ namespace FlightTicketsWeb.Web.Controllers
 			catch (Exception ex)
 			{
 				ModelState.AddModelError("", $"Произошла ошибка: {ex.Message}");
-				return View(model);
+				return View("TicketsAndHotelBooking", model);
 			}
 		}
 		[HttpGet]
