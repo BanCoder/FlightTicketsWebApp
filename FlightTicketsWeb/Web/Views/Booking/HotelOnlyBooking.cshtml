@@ -58,11 +58,11 @@
                 <div class="form-row">
                     <div class="form-group">
                         <label class="form-label">Телефон</label>
-                        <input type="tel" asp-for="Phone" class="form-input">
+                        <input type="tel" asp-for="Phone" class="form-input" required>
                     </div>
                     <div class="form-group">
                         <label class="form-label">Email</label>
-                        <input type="email" asp-for="Email" class="form-input">
+                        <input type="email" asp-for="Email" class="form-input" required>
                     </div>
                 </div>
             </section>
@@ -82,6 +82,15 @@
                     </div>
                 </div>
             </div>
+            @if (!ViewData.ModelState.IsValid && ViewData.ModelState.Values.Any(v => v.Errors.Count > 0))
+            {
+                <div class="w3-panel w3-red w3-round" style="margin-bottom: 15px; padding: 10px;">
+                    @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                    {
+                        <p style="margin: 0;">@error.ErrorMessage</p>
+                    }
+                </div>
+            }
             <div class="form-actions">
                 <button type="submit" class="submit-btn">
                     <i class="fas fa-check-circle"></i> Забронировать отель

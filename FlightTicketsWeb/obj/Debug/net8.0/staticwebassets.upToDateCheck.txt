@@ -1,5 +1,6 @@
 wwwroot\css\aboutUs.css
 wwwroot\css\admin.css
+wwwroot\css\booking.css
 wwwroot\css\index.css
 wwwroot\css\maldives.css
 wwwroot\css\peterburg.css
@@ -208,9 +209,8 @@ wwwroot\img\travel\sofia.png
 wwwroot\img\travel\stambul_main.png
 wwwroot\img\travel\stpeterburg_main.png
 wwwroot\js\authAlert.js
+wwwroot\js\booking.js
 wwwroot\js\index.js
 wwwroot\video\Istanbul.mp4
 wwwroot\video\Maldives.mp4
 wwwroot\video\Saint_Petersburg.mp4
-wwwroot\css\booking.css
-wwwroot\js\booking.js

@@ -54,6 +54,7 @@ namespace FlightTicketsWeb.Web.Controllers
 			}
 			if (!ModelState.IsValid)
 			{
+				await PopulateViewBagForBooking(model.FlightId);
 				return View(model);
 			}
 			try
@@ -108,6 +109,7 @@ namespace FlightTicketsWeb.Web.Controllers
 					ViewBag.ArrivalCity = flight.ArrivalCity;
 					ViewBag.DepartureCity = flight.DepartureCity;
 				}
+				await PopulateViewBagForBooking(model.FlightId);
 				ViewBag.ShowAlert = true;
 				ViewBag.SuccessMessage = "Бронирование успешно создано! Мы отправили Вам сообщение на почту.";
 				ViewBag.BookingCode = booking.BookingCode;
@@ -117,6 +119,7 @@ namespace FlightTicketsWeb.Web.Controllers
 			catch (Exception ex)
 			{
 				ModelState.AddModelError("", $"Произошла ошибка: {ex.Message}");
+				await PopulateViewBagForBooking(model.FlightId);
 				return View("TicketsAndHotelBooking", model);
 			}
 		}
@@ -196,6 +199,21 @@ namespace FlightTicketsWeb.Web.Controllers
 				ViewBag.SelectedHotel = hotel;
 				ViewBag.HotelId = model.HotelId;
 				return View("HotelOnlyBooking", model);
+			}
+		}
+		public async Task PopulateViewBagForBooking(int flightId)
+		{
+			ViewBag.FlightId = flightId;
+			var flight = await _repository.GetFlightByIdAsync(flightId);
+			if (flight != null)
+			{
+				var hotels = await _repository.SearchHotelAsync(new HotelSearchModel
+				{
+					Direction = flight.ArrivalCity
+				});
+				ViewBag.Hotels = hotels;
+				ViewBag.ArrivalCity = flight.ArrivalCity;
+				ViewBag.DepartureCity = flight.DepartureCity;
 			}
 		}
 	}
