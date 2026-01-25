@@ -3,7 +3,6 @@
 @{
     ViewData["Title"] = "Бронирование отеля";
 }
-
 <div class="booking-card-container">
     <div class="booking-card">
         <div class="booking-card-header">
@@ -99,11 +98,47 @@
                     <i class="fas fa-info-circle"></i> Поля отмеченные * обязательны для заполнения
                 </p>
             </div>
-           
         </form>
-        <link rel="stylesheet" href="~/css/booking.css">
-        <script src="~/js/booking.js"></script>
+        
     </div>
+    <div class="hotel-side-info">
+        <div class="hotel-main-image">
+            <img src="~/img/hotels/carousel/@(ViewBag.SelectedHotel.HotelName.ToLower().Replace(" ", "_"))_1.jpg"
+                 alt="@ViewBag.SelectedHotel.HotelName"
+                 onerror="this.src='/img/hotels/default.jpg'">
+        </div>
+
+        <div class="hotel-thumbnails">
+            <img src="~/img/hotels/carousel/@(ViewBag.SelectedHotel.HotelName.ToLower().Replace(" ", "_"))_2.jpg"
+                 alt="Photo_2" onclick="this.parentElement.previousElementSibling.children[0].src=this.src"
+                 onerror="this.style.display='none'">
+            <img src="~/img/hotels/carousel/@(ViewBag.SelectedHotel.HotelName.ToLower().Replace(" ", "_"))_3.jpg"
+                 alt="Photo_3" onclick="this.parentElement.previousElementSibling.children[0].src=this.src"
+                 onerror="this.style.display='none'">
+            <img src="~/img/hotels/carousel/@(ViewBag.SelectedHotel.HotelName.ToLower().Replace(" ", "_"))_4.jpg"
+                 alt="Photo_4" onclick="this.parentElement.previousElementSibling.children[0].src=this.src"
+                 onerror="this.style.display='none'">
+        </div>
+
+        <div class="hotel-details" style="color: black">
+            <h4>@ViewBag.SelectedHotel.HotelName</h4>
+            <div class="stars">
+                @for (int i = 0; i < ViewBag.SelectedHotel.Stars; i++)
+                {
+                    <span>★</span>
+                }
+                <span class="stars-count">@ViewBag.SelectedHotel.Stars</span>
+            </div>
+            <div class="price">@ViewBag.SelectedHotel.CostPerNight.ToString("N0") ₽ / ночь</div>
+            @if (!string.IsNullOrEmpty(ViewBag.SelectedHotel.Category))
+            {
+                <div class="category">@ViewBag.SelectedHotel.Category</div>
+            }
+            <div class="location">г. @ViewBag.SelectedHotel.CityName</div>
+        </div>
+    </div>
+    <link rel="stylesheet" href="~/css/booking.css">
+    <script src="~/js/booking.js"></script>
 </div>
 <div id="alertData"
      data-show-alert="@(ViewBag.ShowAlert == true ? "true" : "false")"
