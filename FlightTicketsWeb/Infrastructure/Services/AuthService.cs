@@ -15,7 +15,7 @@ namespace FlightTicketsWeb.Infrastructure.Services
 		private readonly FlightTicketsContext _context;
 		public AuthService(FlightTicketsContext context)
 		{
-			_context = context;	
+			_context = context;
 		}
 		public async Task<SystemUser?> AuthenticateAsync(string email, string password)
 		{

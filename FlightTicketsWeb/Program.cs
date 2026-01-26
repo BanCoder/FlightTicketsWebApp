@@ -7,6 +7,7 @@ using FlightTicketsWeb.Web.Middleware;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
+using NLog.Web; 
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews().AddRazorOptions(options => {
@@ -35,7 +36,11 @@ builder.Services.AddAuthorization(options =>
 });
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IWeatherService, WeatherService>();
-builder.Services.AddScoped<IEmailService, EmailService>(); 
+builder.Services.AddScoped<IEmailService, EmailService>();
+builder.Logging.ClearProviders();
+builder.Logging.AddConsole(); 
+builder.Host.UseNLog(); 
+
 var app = builder.Build();
 app.UseMiddleware<ExceptionHandlingMiddleware>();
 app.UseStaticFiles();

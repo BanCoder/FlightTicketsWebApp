@@ -78,13 +78,17 @@
               "target": "Package",
               "version": "[8.0.22, )"
             },
+            "NLog.Extensions.Logging": {
+              "target": "Package",
+              "version": "[6.1.0, )"
+            },
+            "NLog.Web.AspNetCore": {
+              "target": "Package",
+              "version": "[6.1.0, )"
+            },
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[13.0.1, )"
-            },
-            "Serilog.AspNetCore": {
-              "target": "Package",
-              "version": "[10.0.0, )"
             }
           },
           "imports": [

@@ -10,11 +10,13 @@ namespace FlightTicketsWeb.Web.Controllers
 	public class AccountController : Controller
 	{
 		private readonly IAuthService _authService;
-		private readonly FlightTicketsContext _context; 
-		public AccountController(IAuthService authService, FlightTicketsContext context)
+		private readonly FlightTicketsContext _context;
+		private readonly ILogger<AccountController> _logger; 
+		public AccountController(IAuthService authService, FlightTicketsContext context, ILogger<AccountController> logger)
 		{
 			_authService = authService;
 			_context = context;
+			_logger = logger;
 		}
 		[HttpGet]
 		[AllowAnonymous]
@@ -39,6 +41,7 @@ namespace FlightTicketsWeb.Web.Controllers
 				return View(model);
 			}
 			await _authService.SignInAsync(HttpContext, user);
+			_logger.LogInformation("Выполнился вход пользователя в аккаунт");
 			TempData["ShowAlert"] = true;
 			TempData["SuccessMessage"] = "Успешный вход в аккаунт!";
 			if (_authService.IsAdmin(user))
@@ -79,6 +82,7 @@ namespace FlightTicketsWeb.Web.Controllers
 					model.LastName,
 					"user");
 				await _authService.SignInAsync(HttpContext, user);
+				_logger.LogInformation("Выполнилась регистрация пользователя");
 				TempData["ShowAlert"] = true;
 				TempData["SuccessMessage"] = "Регистрация прошла успешно!";
 				return RedirectToAction("Index", "Home");
@@ -93,6 +97,7 @@ namespace FlightTicketsWeb.Web.Controllers
 		public async Task<IActionResult> Logout()
 		{
 			await _authService.SignOutAsync(HttpContext);
+			_logger.LogInformation("Выполнился выход пользователя из аккаунта");
 			return RedirectToAction("Index", "Home");
 		}
 
