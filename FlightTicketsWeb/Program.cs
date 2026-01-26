@@ -3,6 +3,8 @@ using FlightTicketsWeb.Infrastructure.Services;
 using FlightTicketsWeb.Shared.Helpers;
 using FlightTicketsWeb.Web.ViewModels.Persistence;
 using FlightTicketsWebsite.Infrastructure;
+using FlightTicketsWeb.Web.Middleware; 
+using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 
@@ -35,6 +37,7 @@ builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IWeatherService, WeatherService>();
 builder.Services.AddScoped<IEmailService, EmailService>(); 
 var app = builder.Build();
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 app.UseStaticFiles();
 app.UseRouting();
 app.UseAuthentication(); 
