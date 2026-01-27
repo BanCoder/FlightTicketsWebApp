@@ -9,7 +9,7 @@ namespace FlightTicketsWeb.Web.Controllers
 	public class TravelController : Controller
 	{
 		private readonly FlightTicketsContext _context;
-		private readonly IWeatherService _service; 
+		private readonly IWeatherService _service;
 		public TravelController(FlightTicketsContext context, IWeatherService service)
 		{
 			_context = context;

@@ -41,7 +41,7 @@ namespace FlightTicketsWeb.Web.Controllers
 				return View(model);
 			}
 			await _authService.SignInAsync(HttpContext, user);
-			_logger.LogInformation("Выполнился вход пользователя в аккаунт");
+			_logger.LogInformation("Выполнился вход пользователя {Email} в аккаунт.", model.Email);
 			TempData["ShowAlert"] = true;
 			TempData["SuccessMessage"] = "Успешный вход в аккаунт!";
 			if (_authService.IsAdmin(user))
@@ -65,14 +65,14 @@ namespace FlightTicketsWeb.Web.Controllers
 		public async Task<IActionResult> Registration(RegisterModel model)
 		{
 			if (!ModelState.IsValid)
+			{
 				return View(model);
-
+			}
 			if (model.Password != model.ConfirmPassword)
 			{
 				ModelState.AddModelError("ConfirmPassword", "Пароли не совпадают");
 				return View(model);
 			}
-
 			try
 			{
 				var user = await _authService.RegisterAsync(
@@ -82,7 +82,7 @@ namespace FlightTicketsWeb.Web.Controllers
 					model.LastName,
 					"user");
 				await _authService.SignInAsync(HttpContext, user);
-				_logger.LogInformation("Выполнилась регистрация пользователя");
+				_logger.LogInformation("Выполнилась регистрация пользователя {Email}.", model.Email);
 				TempData["ShowAlert"] = true;
 				TempData["SuccessMessage"] = "Регистрация прошла успешно!";
 				return RedirectToAction("Index", "Home");
@@ -90,6 +90,7 @@ namespace FlightTicketsWeb.Web.Controllers
 			catch (Exception ex)
 			{
 				ModelState.AddModelError("", ex.Message);
+				_logger.LogError(ex.Message); 
 				return View(model);
 			}
 		}
@@ -97,7 +98,7 @@ namespace FlightTicketsWeb.Web.Controllers
 		public async Task<IActionResult> Logout()
 		{
 			await _authService.SignOutAsync(HttpContext);
-			_logger.LogInformation("Выполнился выход пользователя из аккаунта");
+			_logger.LogInformation("Выполнился выход пользователя из аккаунта.");
 			return RedirectToAction("Index", "Home");
 		}
 

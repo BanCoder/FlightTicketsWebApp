@@ -14,13 +14,15 @@ namespace FlightTicketsWeb.Web.Controllers
 	public class BookingController : Controller
 	{
 		private readonly ITravelRepository _repository;
-		private readonly IAuthService _authService; 
+		private readonly IAuthService _authService;
 		private readonly IEmailService _emailService;
-		public BookingController(ITravelRepository repository, IAuthService authService, IEmailService emailService)
+		private readonly ILogger<BookingController> _logger;
+		public BookingController(ITravelRepository repository, IAuthService authService, IEmailService emailService, ILogger<BookingController> logger)
 		{
 			_repository = repository;
 			_authService = authService;
 			_emailService = emailService;
+			_logger = logger;
 		}
 		[HttpGet]
 		public async Task<IActionResult> TicketsAndHotelBooking(int flightId)
@@ -92,10 +94,12 @@ namespace FlightTicketsWeb.Web.Controllers
 				try
 				{
 					_emailService.SendSuccessEmail(model.Email, model.FirstName, booking.BookingCode);
+					_logger.LogInformation("Успешная отправка письма с подтверждением брони рейсов пользователю {Email}", model.Email); 
 				}
 				catch (Exception ex)
 				{
 					ViewBag.ErrorMessage = "Не удалось отправить подтверждение на email";
+					_logger.LogError("Ошибка отправки письма подтверждения брони рейсов пользователя {Email}:", model.Email); 
 				}
 				ViewBag.FlightId = model.FlightId ;
 				var flight = await _repository.GetFlightByIdAsync(model.FlightId);
@@ -113,12 +117,13 @@ namespace FlightTicketsWeb.Web.Controllers
 				ViewBag.ShowAlert = true;
 				ViewBag.SuccessMessage = "Бронирование успешно создано! Мы отправили Вам сообщение на почту.";
 				ViewBag.BookingCode = booking.BookingCode;
-				
+				_logger.LogInformation("Успешное бронирование рейса пользователя {Email}. Код брони: {BookingCode}", model.Email, booking.BookingCode); 
 				return View(model);
 			}
 			catch (Exception ex)
 			{
 				ModelState.AddModelError("", $"Произошла ошибка: {ex.Message}");
+				_logger.LogError($"Ошибка бронирования рейсов: {ex.Message}"); 
 				await PopulateViewBagForBooking(model.FlightId);
 				return View("TicketsAndHotelBooking", model);
 			}
@@ -182,20 +187,24 @@ namespace FlightTicketsWeb.Web.Controllers
 				try
 				{
 					_emailService.SendSuccessEmail(model.Email, model.FirstName, booking.BookingCode);
+					_logger.LogInformation("Успешная отправка письма с подтверждением брони отелей пользователю {Email}", model.Email);
 				}
 				catch (Exception ex)
 				{
 					ViewBag.EmailError = "Не удалось отправить подтверждение на email";
+					_logger.LogError("Ошибка отправки письма подтверждения брони рейсов пользователя {Email}", model.Email);
 				}
 				ViewBag.BookingCode = booking.BookingCode;
 				ViewBag.SuccessMessage = "Отель забронирован! Мы отправили Вам сообщение на почту.";
 				ViewBag.ShowAlert = true;
 				ViewBag.SelectedHotel = hotel;
+				_logger.LogInformation("Успешное бронирование отеля пользователя {Email}. Код брони: {BookingCode}", model.Email, booking.BookingCode);
 				return View("HotelOnlyBooking", model);
 			}
 			catch (Exception ex)
 			{
 				ModelState.AddModelError("", $"Ошибка: {ex.Message}");
+				_logger.LogError($"Ошибка бронирования отелей: {ex.Message}");
 				ViewBag.SelectedHotel = hotel;
 				ViewBag.HotelId = model.HotelId;
 				return View("HotelOnlyBooking", model);

@@ -1,13 +1,11 @@
 using FlightTicketsWeb.Core.Interfaces;
 using FlightTicketsWeb.Infrastructure.Services;
 using FlightTicketsWeb.Shared.Helpers;
+using FlightTicketsWeb.Web.Middleware;
 using FlightTicketsWeb.Web.ViewModels.Persistence;
 using FlightTicketsWebsite.Infrastructure;
-using FlightTicketsWeb.Web.Middleware; 
-using Microsoft.AspNetCore.Diagnostics;
-using Microsoft.EntityFrameworkCore;
+using NLog.Web;
 using System.Security.Claims;
-using NLog.Web; 
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews().AddRazorOptions(options => {
