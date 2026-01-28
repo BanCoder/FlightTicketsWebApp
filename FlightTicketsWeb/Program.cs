@@ -1,8 +1,8 @@
 using FlightTicketsWeb.Core.Interfaces;
+using FlightTicketsWeb.Infrastructure.Data;
 using FlightTicketsWeb.Infrastructure.Services;
 using FlightTicketsWeb.Shared.Helpers;
 using FlightTicketsWeb.Web.Middleware;
-using FlightTicketsWeb.Web.ViewModels.Persistence;
 using FlightTicketsWebsite.Infrastructure;
 using NLog.Web;
 using System.Security.Claims;

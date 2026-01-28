@@ -1,6 +1,6 @@
 ﻿using FlightTicketsWeb.Core.Interfaces;
+using FlightTicketsWeb.Infrastructure.Data;
 using FlightTicketsWeb.Web.ViewModels;
-using FlightTicketsWeb.Web.ViewModels.Persistence;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 

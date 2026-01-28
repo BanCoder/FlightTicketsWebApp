@@ -3,7 +3,7 @@ using FlightTicketsWeb.Core.Interfaces;
 using FlightTicketsWeb.Web.ViewModels;
 using Microsoft.EntityFrameworkCore;
 
-namespace FlightTicketsWeb.Web.ViewModels.Persistence
+namespace FlightTicketsWeb.Infrastructure.Data
 {
 	public class TravelRepository: ITravelRepository
 	{
@@ -110,8 +110,9 @@ namespace FlightTicketsWeb.Web.ViewModels.Persistence
 			var existingPassenger = await _context.Passengers.FirstOrDefaultAsync(p => p.PassportNum == passengerData.PassportNum);
 
 			if (existingPassenger != null)
+			{
 				return existingPassenger;
-
+			}
 			passengerData.CreatedAt = DateTime.Now;
 			_context.Passengers.Add(passengerData);
 			await _context.SaveChangesAsync();

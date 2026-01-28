@@ -1,7 +1,7 @@
 ﻿using BCrypt.Net;
 using FlightTicketsWeb.Core.Entities;
 using FlightTicketsWeb.Core.Interfaces;
-using FlightTicketsWeb.Web.ViewModels.Persistence;
+using FlightTicketsWeb.Infrastructure.Data;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;

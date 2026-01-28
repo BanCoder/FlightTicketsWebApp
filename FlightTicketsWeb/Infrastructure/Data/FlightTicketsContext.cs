@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using FlightTicketsWeb.Core.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace FlightTicketsWeb.Web.ViewModels.Persistence;
+namespace FlightTicketsWeb.Infrastructure.Data;
 
 public partial class FlightTicketsContext : DbContext
 {

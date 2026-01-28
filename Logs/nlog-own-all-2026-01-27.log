@@ -1,4 +1,0 @@
-2026-01-27 15:54:32.8567|FlightTicketsWeb.Web.Controllers.AccountController|INFO|Выполнился выход пользователя из аккаунта. 
-2026-01-27 15:54:42.2971|FlightTicketsWeb.Web.Controllers.AccountController|INFO|Выполнился вход пользователя belskiy548@gmail.com в аккаунт. 
-2026-01-27 15:57:50.0558|FlightTicketsWeb.Web.Controllers.BookingController|INFO|Успешная отправка письма с подтверждением брони рейсов пользователю belskiy548@gmail.com 
-2026-01-27 15:57:50.0564|FlightTicketsWeb.Web.Controllers.BookingController|INFO|Успешное бронирование рейса пользователя belskiy548@gmail.com. Код брони: BJ2QCD7D 

@@ -1,4 +1,4 @@
-﻿using FlightTicketsWeb.Web.ViewModels.Persistence;
+﻿using FlightTicketsWeb.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 
 namespace FlightTicketsWeb.Shared.Helpers

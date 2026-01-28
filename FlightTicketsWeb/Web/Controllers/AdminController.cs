@@ -1,4 +1,4 @@
-﻿using FlightTicketsWeb.Web.ViewModels.Persistence;
+﻿using FlightTicketsWeb.Infrastructure.Data;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;

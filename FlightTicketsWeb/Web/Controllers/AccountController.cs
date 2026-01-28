@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using FlightTicketsWeb.Core.Interfaces;
 using FlightTicketsWeb.Web.ViewModels;
-using FlightTicketsWeb.Web.ViewModels.Persistence;
+using FlightTicketsWeb.Infrastructure.Data;
 
 namespace FlightTicketsWeb.Web.Controllers
 {
