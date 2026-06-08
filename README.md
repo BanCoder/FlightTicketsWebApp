@@ -8,16 +8,16 @@ Web-приложение для онлайн бронирования авиаб
 - ОС: Windows 10/11
 - Backend: .NET 6.0+ SDK
 - IDE (рекомендуется): Visual Studio 2022, Visual Studio Code
-- База данных: PostgreSQL, MS SQL Server
+- База данных: MS SQL Server
 
 ### Установка и запуск 🔧
-1. Клонируйте репозиторий
+1. Скачайте архив или клонируйте репозиторий(если установлен git)
     ```bash
     git clone https://github.com/BanCoder/FlightTicketsWeb.git
     cd FlightTicketsWeb
     ```
 2. Настройка базы данных
-   - Создайте базу данных в PostgreSQL или MS SQL Server
+   - Создайте базу данных в MS SQL Server
         ```sql
         CREATE DATABASE flight_tickets;
         ```
@@ -106,7 +106,7 @@ Web-приложение для онлайн бронирования авиаб
         -- Вставка данных в таблицы
         use flight_tickets
         INSERT INTO SystemUser (email, password_hash, first_name, last_name, role) 
-        VALUES ('admin@airtravel.com', '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy', 'Admin', 'Admin', 'admin');
+        VALUES ('admin@test.com', '$2a$11$Ax17hWE36TwGOtVqNfIsX.3Skkjf.B4O2BeDadfmV3XWDfGZs4i6e', 'Admin', 'Admin', 'admin');
 
         INSERT INTO City (city_name, country, region, climate, airport_code) VALUES
         (N'Москва', N'Россия', N'Центральная Россия', N'Умеренный', N'SVO'),
@@ -289,9 +289,10 @@ Web-приложение для онлайн бронирования авиаб
    - Обновите строку подключения в `FlightTicketsWeb/appsettings.json`
         ```json
         "ConnectionSettings": {
-        "sqlConnection": "Server=DESKTOP-5B36UD4;Database=flight_tickets;Trusted_Connection=True;Encrypt=false"
+        "sqlConnection": "Server=YOUR_SERVER;Database=flight_tickets;Trusted_Connection=True;Encrypt=false"
         }
         ```
+        >**Важно:** Данная строка подключения предназанчена для MS SQL Server. В строке `Server` вы должны указать название, которое у вас указано в MS SQL SERVER. 
 3. Создание контекста базы данных
    - Перейдите в папку с решением 
         ```bash
@@ -299,29 +300,72 @@ Web-приложение для онлайн бронирования авиаб
         ```
     - Создайте контекст следующей командой:
         ```bash
-        dotnet ef dbcontext scaffold "Server=DESKTOP-5B36UD4;Database=flight_tickets;Trusted_Connection=True;Encrypt=false" Microsoft.EntityFrameworkCore.SqlServer -o Models --force
+        dotnet ef dbcontext scaffold "Server=YOUR_SERVER;Database=flight_tickets;Trusted_Connection=True;Encrypt=false" Microsoft.EntityFrameworkCore.SqlServer -o Models --force
         ```
 4. Запуск приложения:
-        Backend и Frontend (в терминале) или просто нажмите вверху на зеленый треугольник
-        ```
-        cd FlightTicketsWeb\FlightTicketsWeb
-        dotnet run
-        ```
+        В терминале или просто нажмите вверху на зеленый треугольник
+    ```bash
+    cd FlightTicketsWeb\FlightTicketsWeb
+    dotnet run
+    ``` 
 
 ### Использование 📝
 Данное веб-приложение обладает следующим функционалом: 
-
 1. Поиск авиабилетов и отелей, через ввод информации в поля на главной странице
-2. Наличие стрницы "Полпулярные направления" с информацией о городах, а также отображением погоды в выбранном вами месте в реальном времени
-3. Возможность входа/регистрации пользоваетлся на сайте, что позволяет ему осуществлять бронирование авиабилетов и отелей
+2. Наличие страницы "Популярные направления" с информацией о городах, а также отображением погоды в выбранном вами месте в реальном времени
+3. Возможность входа/регистрации пользователя на сайте, что позволяет ему осуществлять бронирование авиабилетов и отелей
 4. Возможность входа администратора под своим аккаунтом и выполнении запросов в специальной админ-панели
-5. Наличие статичных страниц с информацией для пользователей (вкалдки "О нас", "Акции")
+    > **Данные для входа администратора:**
+    > - Email: `admin@test.com`
+    > - Пароль: `admin123`
+5. Наличие статичных страниц с информацией для пользователей (вкладки "О нас", "Акции")
 6. Возможность бронирование рейсов и отелей при выборе выбранного вами направления. Если вы не регистрировались или не вошли под своим аккаунтом, вас перебросить на страницу с входом. 
-7. После осуществления бронирования, вам отправится на почту сообщение с подтсверждением брони.  
+7. После осуществления бронирования, вам отправится на почту сообщение с подтверждением брони.  
+
+### Скриншоты 🖼️
+![IndexPage-search](screenshots/main_1.png)
+
+*Секция поиска билетов и отелей*
+
+![IndexPage-directions](screenshots/main_2.png)
+
+*Секция популярных направлений*
+
+![IndexPage-info](screenshots/main_3.png)
+
+*Информационная секция*
+
+![RegistrationPage](screenshots/registration.png)
+
+*Страница регистрации пользователей*
+
+![AboutUsPage-1](screenshots/aboutus_1.png)
+
+*Страница "О нас"*
+
+![AboutUsPage-2](screenshots/aboutus_2.png)
+
+*Страница "О нас"*
+
+![AboutUsPage-team](screenshots/aboutus_3.png)
+
+*Секция с командой*
+
+![TicketsPage](screenshots/tickets.png)
+
+*Страница выведенных билетов*
+
+![HotelsPage](screenshots/hotels.png)
+
+*Страница выведенных отелей*
+
+![AdminPage](screenshots/admin_panel.png)
+
+*Панель администратора*
 
 ### Особенности ✅
 - **Чистый MVC**: полное взаимодействие 3 элементов: model, view, controller
-- **Ипользование DI**: позволяет снижать зависимости между классами
+- **Использование DI**: позволяет снижать зависимости между классами
 - **Валидация**: проверка введенных данных пользователем в поля
 - **Использование Razor Pages**: позволяет не создавать отдельное React приложение, а использовать знакомый html код
 - **Расширенный функционал для администратора**: Администратор приложения может выполнять все операции над БД, а также отслеживать все действия пользователей и выявлять ошибки при их возникновении
@@ -331,6 +375,6 @@ Web-приложение для онлайн бронирования авиаб
 `Backend` и `Frontend`: 
 - **Фреймворк**: .NET 8.0 Web API
 - **ORM**: Entity Framework Core 8.0
-- **База данных**: MS SQL Server с соотвествующим пакетом
-- **Логироание действий пользователя в файл и использованием NLog**
+- **База данных**: MS SQL Server с соответствующим пакетом
+- **Логирование действий пользователя в файл c использованием NLog**
 
