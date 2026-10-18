@@ -286,7 +286,7 @@ Web-приложение для онлайн бронирования авиаб
         END;
         GO
         ```
-   - Обновите строку подключения в `FlightTicketsWeb/appsettings.json`
+   - Создайте файл appSettings.json и обновите строку подключения в `FlightTicketsWeb/appsettings.json`
         ```json
         "ConnectionSettings": {
         "sqlConnection": "Server=YOUR_SERVER;Database=flight_tickets;Trusted_Connection=True;Encrypt=false"
